@@ -14,7 +14,7 @@ export default function FeaturedProducts() {
         ))}
       </div>
       <a className="outline-button" href="#menu">
-        Ver todo el menú
+        Ver todo el catálogo
         <Grid3X3 size={17} aria-hidden="true" />
       </a>
     </section>

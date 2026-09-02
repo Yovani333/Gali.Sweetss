@@ -1,35 +1,73 @@
-import cupcake from '../assets/images/cupcake-vainilla.png';
-import rainbowCake from '../assets/images/pastel-arcoiris.png';
-import elegantCake from '../assets/images/pastel-elegante.png';
-import customCake from '../assets/images/pastel-personalizado.png';
+import cake17 from '../../Catalogo Gali/Mejoradas/17.png';
+import cake18 from '../../Catalogo Gali/Mejoradas/18.png';
+import cake30 from '../../Catalogo Gali/Mejoradas/30.png';
+import cake5 from '../../Catalogo Gali/Mejoradas/5.png';
+import cakeCars from '../../Catalogo Gali/Mejoradas/cars.jpeg';
+import cakeChocolate from '../../Catalogo Gali/Mejoradas/Chocolate.png';
+import cakeBirthday from '../../Catalogo Gali/Mejoradas/Cumpleaños.png';
+import cakeFlower from '../../Catalogo Gali/Mejoradas/Flor.png';
+import cakeThreeTier from '../../Catalogo Gali/Mejoradas/Pastel de 3 Camas.png';
+import cakePrincess from '../../Catalogo Gali/Mejoradas/Princesa.jpeg';
 
 export const products = [
   {
-    name: 'Cupcake de Vainilla',
-    description: 'Esponjoso cupcake con frosting\nde vainilla y detalles en rosa.',
-    price: '$2.50',
-    image: cupcake,
-    alt: 'Cupcake rosa con vela'
+    name: 'Pastel Floral',
+    description: 'Diseño delicado con flores de betún\ny detalles perlados.',
+    image: cake17,
+    alt: 'Pastel blanco con flores rosas y amarillas'
   },
   {
-    name: 'Pastel Arcoíris',
-    description: 'Pastel multicolor decorado con\ncrema, cerezas y detalles únicos.',
-    price: '$45.00',
-    image: rainbowCake,
-    alt: 'Pastel arcoiris con cerezas'
+    name: 'Pastel Casino',
+    description: 'Decoración temática con cartas,\nfichas y acabado elegante.',
+    image: cake18,
+    alt: 'Pastel negro con decoracion de casino'
   },
   {
-    name: 'Pastel Elegante',
-    description: 'Diseño clásico en tonos rosados,\nideal para celebraciones especiales.',
-    price: '$65.00',
-    image: elegantCake,
-    alt: 'Pastel alto elegante rosa y blanco'
+    name: 'Pastel Margaritas',
+    description: 'Pastel rosa con flores blancas,\nperlas y detalles dorados.',
+    image: cake30,
+    alt: 'Pastel rosa con margaritas blancas'
   },
   {
-    name: 'Pastel Personalizado',
-    description: 'Creamos el diseño que imaginas\npara momentos inolvidables.',
-    price: '$50.00',
-    image: customCake,
-    alt: 'Pastel personalizado con ilustracion decorativa'
+    name: 'Pastel Musical',
+    description: 'Diseño personalizado con tonos\nlila, estrellas y música.',
+    image: cake5,
+    alt: 'Pastel morado personalizado con tema musical'
+  },
+  {
+    name: 'Pastel Cars',
+    description: 'Pastel infantil personalizado con\ncolores y detalles de carrera.',
+    image: cakeCars,
+    alt: 'Pastel infantil con tema de carreras'
+  },
+  {
+    name: 'Pastel de Chocolate',
+    description: 'Cubierta blanca con fresas frescas\ny drip de chocolate.',
+    image: cakeChocolate,
+    alt: 'Pastel blanco con fresas y chocolate'
+  },
+  {
+    name: 'Pastel Cumpleaños',
+    description: 'Diseño oscuro con lazos, brillo\ny decoración de cumpleaños.',
+    image: cakeBirthday,
+    alt: 'Pastel negro decorado para cumpleaños'
+  },
+  {
+    name: 'Pastel con Flores',
+    description: 'Acabado clásico blanco con flores\ny detalles elegantes.',
+    image: cakeFlower,
+    alt: 'Pastel blanco con flores grandes'
+  },
+  {
+    name: 'Pastel de 3 Capas',
+    description: 'Pastel alto en tonos rosados,\nideal para celebraciones grandes.',
+    image: cakeThreeTier,
+    alt: 'Pastel de tres capas rosa y blanco'
+  },
+  {
+    name: 'Pastel Princesa',
+    description: 'Diseño colorido para celebraciones\ninfantiles personalizadas.',
+    image: cakePrincess,
+    alt: 'Pastel de princesa con cerezas'
   }
 ];

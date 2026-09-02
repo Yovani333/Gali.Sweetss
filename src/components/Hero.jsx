@@ -1,5 +1,5 @@
 import { ArrowRight, ShoppingBag } from 'lucide-react';
-import heroCake from '../assets/images/hero-cake.png';
+import heroCake from '../../Catalogo Gali/Mejoradas/Pastel de 3 Camas.png';
 
 const avatarColors = ['#8d5c4f', '#f5a6b8', '#6f4a3f', '#e7c0ad', '#4b3939'];
 
@@ -34,8 +34,8 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="hero__image-wrap" id="galeria" aria-label="Pastel rosa decorado con rosas de betun">
-        <img src={heroCake} alt="Pastel rosa decorado con rosas de betun y cupcakes al fondo" />
+      <div className="hero__image-wrap" id="galeria" aria-label="Pastel de tres capas de Gali Sweets">
+        <img src={heroCake} alt="Pastel de tres capas rosa y blanco de Gali Sweets" />
       </div>
     </section>
   );
