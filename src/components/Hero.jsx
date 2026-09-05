@@ -1,9 +1,10 @@
 import { ArrowRight, ShoppingBag } from 'lucide-react';
 import heroCake from '../../Catalogo Gali/Mejoradas/Pastel de 3 Camas.png';
+import PreviewImage from './PreviewImage.jsx';
 
 const avatarColors = ['#8d5c4f', '#f5a6b8', '#6f4a3f', '#e7c0ad', '#4b3939'];
 
-export default function Hero() {
+export default function Hero({ onPreview }) {
   return (
     <section className="hero" id="inicio">
       <div className="hero__copy">
@@ -35,7 +36,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="hero__image-wrap" id="galeria" aria-label="Pastel de tres capas de Gali Sweets">
-        <img src={heroCake} alt="Pastel de tres capas rosa y blanco de Gali Sweets" />
+        <PreviewImage src={heroCake} alt="Pastel de tres capas rosa y blanco de Gali Sweets" onPreview={onPreview} />
       </div>
     </section>
   );

@@ -1,0 +1,74 @@
+.image-preview-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.hero__image-wrap .image-preview-trigger { height: 100%; }
+.image-preview-trigger:focus-visible { outline-offset: -4px; }
+
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(24, 18, 21, 0.94);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.image-viewer::backdrop { background: rgba(24, 18, 21, 0.45); }
+.image-viewer__controls {
+  position: absolute;
+  z-index: 1;
+  top: max(10px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  display: flex;
+  gap: 6px;
+}
+
+.image-viewer__controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.image-viewer__controls button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.12); }
+.image-viewer__controls button:disabled { opacity: 0.3; cursor: default; }
+.image-viewer :focus-visible { outline: 2px solid var(--pink-border); outline-offset: 2px; }
+.image-viewer__viewport {
+  position: absolute;
+  inset: max(66px, calc(env(safe-area-inset-top) + 56px)) 16px max(16px, env(safe-area-inset-bottom));
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.image-viewer__viewport::-webkit-scrollbar { display: none; }
+.image-viewer__stage { display: grid; place-items: center; }
+.image-viewer__image { display: block; max-width: none; object-fit: contain; user-select: none; }
+.image-viewer__viewport.is-zoomed { cursor: grab; }
+.image-viewer__viewport.is-dragging { cursor: grabbing; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .image-viewer[open] { animation: viewer-enter 240ms ease-out; }
+}
+
+@keyframes viewer-enter { from { opacity: 0; } to { opacity: 1; } }

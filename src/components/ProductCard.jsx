@@ -1,7 +1,9 @@
-export default function ProductCard({ product }) {
+import PreviewImage from './PreviewImage.jsx';
+
+export default function ProductCard({ product, onPreview }) {
   return (
     <article className="product-card">
-      <img src={product.image} alt={product.alt} />
+      <PreviewImage src={product.image} alt={product.alt} onPreview={onPreview} />
       <div className="product-card__body">
         <h3>{product.name}</h3>
         <p>{product.description}</p>

@@ -4,18 +4,22 @@ import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import InfoBand from './components/InfoBand.jsx';
 import usePageMotion from './hooks/usePageMotion.js';
+import { useState } from 'react';
+import ImageViewer from './components/ImageViewer.jsx';
 
 export default function App() {
   usePageMotion();
+  const [preview, setPreview] = useState(null);
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <FeaturedProducts />
+        <Hero onPreview={setPreview} />
+        <FeaturedProducts onPreview={setPreview} />
         <InfoBand />
       </main>
       <Footer />
+      {preview && <ImageViewer image={preview} onClose={() => setPreview(null)} />}
     </>
   );
 }

@@ -2,7 +2,7 @@ import { Grid3X3 } from 'lucide-react';
 import { products } from '../data/products.js';
 import ProductCard from './ProductCard.jsx';
 
-export default function FeaturedProducts() {
+export default function FeaturedProducts({ onPreview }) {
   return (
     <section className="featured section" id="menu">
       <h2 className="section-title">
@@ -10,7 +10,7 @@ export default function FeaturedProducts() {
       </h2>
       <div className="products-grid">
         {products.map((product) => (
-          <ProductCard key={product.name} product={product} />
+          <ProductCard key={product.name} product={product} onPreview={onPreview} />
         ))}
       </div>
       <a className="outline-button" href="#menu">
