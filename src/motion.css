@@ -1,0 +1,123 @@
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 240ms;
+  --motion-slow: 420ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Keep font discovery active before an off-screen entrance. */
+  [data-motion-pending] { opacity: 0.001; }
+
+  .order-button, .outline-button, .menu-toggle {
+    transition: transform var(--motion-fast) var(--motion-ease),
+      box-shadow var(--motion-slow) var(--motion-ease),
+      background-color var(--motion-fast) ease;
+  }
+
+  .order-button svg, .outline-button svg, .logo img, .benefit svg {
+    transition: transform var(--motion-slow) var(--motion-ease);
+  }
+
+  .product-card, .testimonial-card {
+    transition: transform var(--motion-slow) var(--motion-ease),
+      box-shadow var(--motion-slow) var(--motion-ease),
+      border-color var(--motion-fast) ease;
+  }
+
+  .nav a { transition: color var(--motion-fast) ease; }
+  .nav a::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 17px;
+    height: 2px;
+    content: '';
+    border-radius: 999px;
+    background: var(--pink-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--motion-fast) var(--motion-ease);
+  }
+  .nav a:is(.active, :hover, :focus-visible)::after { transform: scaleX(1); }
+
+  .order-button:active, .outline-button:active, .menu-toggle:active {
+    transform: scale(0.98);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .product-card:hover {
+      transform: perspective(1000px) translateY(-3px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1.008);
+      box-shadow: 0 12px 24px rgba(153, 60, 78, 0.12);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-2px) scale(1.005);
+      box-shadow: 0 8px 18px rgba(153, 60, 78, 0.1);
+    }
+    .order-button:hover, .outline-button:hover {
+      transform: translateY(-2px) scale(1.015);
+    }
+    .order-button:hover svg:last-child { transform: translateX(2px); }
+    .outline-button:hover svg { transform: rotate(6deg); }
+    .logo:hover img { transform: scale(1.025); }
+    .benefit:hover svg { transform: translateY(-2px); }
+  }
+
+  @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+    .about__badge .logo {
+      animation: gentle-float 8s ease-in-out infinite;
+      animation-play-state: paused;
+    }
+    .about__badge .logo.motion-in-view { animation-play-state: running; }
+    .hero { position: relative; isolation: isolate; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(90deg, #fff4f7 0%, #fff7fa 44%, #ffdce5 100%);
+      animation: gradient-breathe 16s ease-in-out infinite paused;
+    }
+    .hero.motion-in-view::before { animation-play-state: running; }
+  }
+
+  @media (max-width: 780px) {
+    .nav {
+      display: grid;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity var(--motion-fast) ease,
+        transform var(--motion-fast) var(--motion-ease),
+        visibility var(--motion-fast);
+    }
+    .nav--open {
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .nav a::after { bottom: 5px; left: 12px; right: auto; width: 38px; }
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes gradient-breathe {
+  0%, 100% { opacity: 0; transform: translateX(0); }
+  50% { opacity: 0.18; transform: translateX(-3%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  #root *, #root *::before, #root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  [data-motion-pending] { opacity: 1; }
+  .product-card:hover, .order-button:hover { transform: none; }
+}
