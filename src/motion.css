@@ -1,7 +1,7 @@
 :root {
-  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-fast: 240ms;
-  --motion-slow: 420ms;
+  --motion-ease: cubic-bezier(0.2, 0.65, 0.3, 1);
+  --motion-fast: 300ms;
+  --motion-slow: 520ms;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,7 +14,7 @@
       background-color var(--motion-fast) ease;
   }
 
-  .order-button svg, .outline-button svg, .logo img, .benefit svg {
+  .order-button .lucide-arrow-right {
     transition: transform var(--motion-slow) var(--motion-ease);
   }
 
@@ -41,30 +41,28 @@
   .nav a:is(.active, :hover, :focus-visible)::after { transform: scaleX(1); }
 
   .order-button:active, .outline-button:active, .menu-toggle:active {
-    transform: scale(0.98);
+    transform: scale(0.99);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .product-card:hover {
-      transform: perspective(1000px) translateY(-3px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1.008);
-      box-shadow: 0 12px 24px rgba(153, 60, 78, 0.12);
+      transform: perspective(1200px) translateY(-2px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1.004);
+      box-shadow: 0 10px 22px rgba(153, 60, 78, 0.1);
     }
     .testimonial-card:hover {
-      transform: translateY(-2px) scale(1.005);
-      box-shadow: 0 8px 18px rgba(153, 60, 78, 0.1);
+      box-shadow: 0 6px 16px rgba(153, 60, 78, 0.07);
     }
     .order-button:hover, .outline-button:hover {
-      transform: translateY(-2px) scale(1.015);
+      transform: translateY(-1px);
     }
-    .order-button:hover svg:last-child { transform: translateX(2px); }
-    .outline-button:hover svg { transform: rotate(6deg); }
-    .logo:hover img { transform: scale(1.025); }
-    .benefit:hover svg { transform: translateY(-2px); }
+    .hero__button:hover { transform: translateY(-1px) scale(1.008); }
+    .order-button:hover .lucide-arrow-right { transform: translateX(2px); }
+    .order-button:active, .outline-button:active { transform: scale(0.99); }
   }
 
   @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
     .about__badge .logo {
-      animation: gentle-float 8s ease-in-out infinite;
+      animation: gentle-float 12s 1.2s ease-in-out 1;
       animation-play-state: paused;
     }
     .about__badge .logo.motion-in-view { animation-play-state: running; }
@@ -76,7 +74,7 @@
       z-index: -1;
       pointer-events: none;
       background: linear-gradient(90deg, #fff4f7 0%, #fff7fa 44%, #ffdce5 100%);
-      animation: gradient-breathe 16s ease-in-out infinite paused;
+      animation: gradient-breathe 24s ease-in-out infinite paused;
     }
     .hero.motion-in-view::before { animation-play-state: running; }
   }
@@ -86,7 +84,7 @@
       display: grid;
       visibility: hidden;
       opacity: 0;
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       pointer-events: none;
       transition: opacity var(--motion-fast) ease,
         transform var(--motion-fast) var(--motion-ease),
@@ -104,12 +102,12 @@
 
 @keyframes gentle-float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
+  50% { transform: translateY(-1.5px); }
 }
 
 @keyframes gradient-breathe {
   0%, 100% { opacity: 0; transform: translateX(0); }
-  50% { opacity: 0.18; transform: translateX(-3%); }
+  50% { opacity: 0.1; transform: translateX(-1.5%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

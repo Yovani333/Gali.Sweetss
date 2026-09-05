@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
 const groups = [
-  ['.hero__copy > *', 10, 1],
-  ['.hero__image-wrap', 0, 0.995],
-  ['.section-title, .about__content > h2, .testimonials-panel h2', 8, 1],
-  ['.product-card', 16, 0.99],
-  ['.about__badge, .about__content > p', 10, 1],
-  ['.benefit', 8, 1],
-  ['.testimonial-card', 12, 1],
-  ['.footer__brand, .footer__col, .copyright', 8, 1],
+  { selector: '.hero__copy > *', distance: 10, duration: 900, stagger: 85 },
+  { selector: '.hero__image-wrap', scale: 0.997, duration: 1100 },
+  { selector: '.section-title', distance: 6, duration: 800 },
+  { selector: '.product-card', distance: 8, duration: 780, stagger: 65 },
+  { selector: '.about__badge', scale: 0.997, duration: 900 },
+  { selector: '.about__content, .testimonials-panel h2', duration: 700 },
+  { selector: '.testimonial-card', duration: 700, stagger: 50 },
+  { selector: '.footer__inner, .copyright', duration: 650 },
 ];
 
 export default function usePageMotion() {
@@ -25,6 +25,7 @@ export default function usePageMotion() {
 
       const animations = new Set();
       const pending = new Map();
+      const entranceEase = getComputedStyle(root).getPropertyValue('--motion-ease').trim();
       const animated = root.querySelectorAll('.about__badge .logo, .hero');
       const visibility = new IntersectionObserver((entries) => {
         entries.forEach(({ target, isIntersecting }) => {
@@ -33,35 +34,42 @@ export default function usePageMotion() {
       });
       animated.forEach((element) => visibility.observe(element));
 
-      function reveal(element, immediate = false) {
+      function reveal(element, immediate = false, delay = 0) {
         const options = pending.get(element);
         if (!options) return;
         pending.delete(element);
         revealed.add(element);
         element.removeAttribute('data-motion-pending');
         if (immediate) return;
-        const { distance, scale, delay } = options;
+        const { distance = 0, scale = 1, duration } = options;
+        const travel = desktop.matches ? distance : distance * 0.6;
         const keyframes = distance === 0 && scale === 1 ? [{ opacity: 0 }, { opacity: 1 }] : [
-          { opacity: 0, transform: `translateY(${distance}px) scale(${scale})` },
+          { opacity: 0, transform: `translateY(${travel}px) scale(${scale})` },
           { opacity: 1, transform: 'translateY(0) scale(1)' },
         ];
-        const animation = element.animate(keyframes, { duration: 640, delay, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' });
+        const animation = element.animate(keyframes, { duration, delay, easing: entranceEase, fill: 'backwards' });
         animations.add(animation);
         animation.onfinish = () => animations.delete(animation);
       }
 
       const observer = new IntersectionObserver((entries) => {
+        // Stagger only newly visible siblings, independent of the grid column count.
+        const counts = new Map();
         entries.forEach(({ target, isIntersecting }) => {
           if (!isIntersecting) return;
-          reveal(target);
+          const group = pending.get(target);
+          const index = counts.get(group) || 0;
+          counts.set(group, index + 1);
+          const stagger = desktop.matches ? (group?.stagger || 0) : Math.min(group?.stagger || 0, 40);
+          reveal(target, false, Math.min(index * stagger, desktop.matches ? 255 : 80));
           observer.unobserve(target);
         });
       }, { threshold: 0.06 });
 
-      groups.forEach(([selector, distance, scale]) => {
-        root.querySelectorAll(selector).forEach((element, index) => {
+      groups.forEach((group) => {
+        root.querySelectorAll(group.selector).forEach((element) => {
           if (revealed.has(element)) return;
-          pending.set(element, { distance, scale, delay: (index % 5) * 45 });
+          pending.set(element, group);
           element.setAttribute('data-motion-pending', '');
           observer.observe(element);
         });
@@ -90,8 +98,8 @@ export default function usePageMotion() {
             frame = requestAnimationFrame(() => {
               const x = Math.max(-0.5, Math.min(0.5, (event.clientX - bounds.left) / bounds.width - 0.5));
               const y = Math.max(-0.5, Math.min(0.5, (event.clientY - bounds.top) / bounds.height - 0.5));
-              card.style.setProperty('--tilt-x', `${-y * 2}deg`);
-              card.style.setProperty('--tilt-y', `${x * 2}deg`);
+              card.style.setProperty('--tilt-x', `${-y * 1.2}deg`);
+              card.style.setProperty('--tilt-y', `${x * 1.2}deg`);
             });
           };
           const leave = () => {
@@ -121,7 +129,7 @@ export default function usePageMotion() {
             frame = 0;
             const offsets = hearts.map((heart) => {
               const rect = heart.parentElement.getBoundingClientRect();
-              return Math.max(-3, Math.min(3, (window.innerHeight / 2 - rect.top) * 0.008));
+              return Math.max(-2, Math.min(2, (window.innerHeight / 2 - rect.top) * 0.005));
             });
             hearts.forEach((heart, index) => { heart.style.translate = `0 ${offsets[index]}px`; });
           });
