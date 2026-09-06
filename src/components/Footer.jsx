@@ -1,5 +1,6 @@
 import { Clock, Instagram, Mail, MessageCircle } from 'lucide-react';
 import Logo from './Logo.jsx';
+import { businessConfig, directWhatsAppUrl } from '../config/business.js';
 
 function CupcakeIcon() {
   return (
@@ -32,7 +33,7 @@ export default function Footer() {
           <h3>Contáctanos</h3>
           <p>
             <MessageCircle size={18} aria-hidden="true" />
-            +57 300 123 4567
+            <a href={directWhatsAppUrl} target="_blank" rel="noreferrer">{businessConfig.whatsappDisplay}</a>
           </p>
           <p>
             <Mail size={18} aria-hidden="true" />
@@ -43,9 +44,9 @@ export default function Footer() {
           <h3>Pedidos</h3>
           <p>
             <Clock size={18} aria-hidden="true" />
-            Lun - Sáb: 9:00 a.m. - 7:00 p.m.
+            {businessConfig.schedule.label}
           </p>
-          <p>Por pedido con al menos 24h de anticipación.</p>
+          <p>Por pedido con al menos {businessConfig.minimumNoticeHours}h de anticipación.</p>
         </div>
         <CupcakeIcon />
       </div>

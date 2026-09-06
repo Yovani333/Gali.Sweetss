@@ -6,6 +6,7 @@ import InfoBand from './components/InfoBand.jsx';
 import usePageMotion from './hooks/usePageMotion.js';
 import { useState } from 'react';
 import ImageViewer from './components/ImageViewer.jsx';
+import ChatWidget from './components/chat/ChatWidget.jsx';
 
 export default function App() {
   usePageMotion();
@@ -19,6 +20,7 @@ export default function App() {
         <InfoBand />
       </main>
       <Footer />
+      <ChatWidget onPreview={setPreview} />
       {preview && <ImageViewer image={preview} onClose={() => setPreview(null)} />}
     </>
   );

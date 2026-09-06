@@ -34,7 +34,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <a className="order-button header__cta" href="#pedidos">
+        <a className="order-button header__cta" href="#pedidos" onClick={(event) => { event.preventDefault(); window.dispatchEvent(new Event('gali:open-chat')); }}>
           <ShoppingBag size={17} aria-hidden="true" />
           Haz tu pedido
         </a>

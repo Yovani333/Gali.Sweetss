@@ -17,7 +17,7 @@ export default function Hero() {
           disponibles <strong>por pedido.</strong>
         </p>
         <div className="hero__actions">
-          <a className="order-button hero__button" href="#pedidos">
+          <a className="order-button hero__button" href="#pedidos" onClick={(event) => { event.preventDefault(); window.dispatchEvent(new Event('gali:open-chat')); }}>
             <ShoppingBag size={17} aria-hidden="true" />
             Haz tu pedido
             <ArrowRight size={18} aria-hidden="true" />

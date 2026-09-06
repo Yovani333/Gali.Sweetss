@@ -11,63 +11,83 @@ import cakePrincess from '../../Catalogo Gali/Mejoradas/Princesa.jpeg';
 
 export const products = [
   {
+    id: 'pastel-floral',
     name: 'Pastel Floral',
     description: 'Diseño delicado con flores de betún\ny detalles perlados.',
     image: cake17,
-    alt: 'Pastel blanco con flores rosas y amarillas'
+    alt: 'Pastel blanco con flores rosas y amarillas',
+    price: null
   },
   {
+    id: 'pastel-casino',
     name: 'Pastel Casino',
     description: 'Decoración temática con cartas,\nfichas y acabado elegante.',
     image: cake18,
-    alt: 'Pastel negro con decoracion de casino'
+    alt: 'Pastel negro con decoracion de casino',
+    price: null
   },
   {
+    id: 'pastel-margaritas',
     name: 'Pastel Margaritas',
     description: 'Pastel rosa con flores blancas,\nperlas y detalles dorados.',
     image: cake30,
-    alt: 'Pastel rosa con margaritas blancas'
+    alt: 'Pastel rosa con margaritas blancas',
+    price: null
   },
   {
+    id: 'pastel-musical',
     name: 'Pastel Musical',
     description: 'Diseño personalizado con tonos\nlila, estrellas y música.',
     image: cake5,
-    alt: 'Pastel morado personalizado con tema musical'
+    alt: 'Pastel morado personalizado con tema musical',
+    price: null
   },
   {
+    id: 'pastel-cars',
     name: 'Pastel Cars',
     description: 'Pastel infantil personalizado con\ncolores y detalles de carrera.',
     image: cakeCars,
-    alt: 'Pastel infantil con tema de carreras'
+    alt: 'Pastel infantil con tema de carreras',
+    price: null
   },
   {
+    id: 'pastel-chocolate',
     name: 'Pastel de Chocolate',
     description: 'Cubierta blanca con fresas frescas\ny drip de chocolate.',
     image: cakeChocolate,
-    alt: 'Pastel blanco con fresas y chocolate'
+    alt: 'Pastel blanco con fresas y chocolate',
+    price: null
   },
   {
+    id: 'pastel-cumpleanos',
     name: 'Pastel Cumpleaños',
     description: 'Diseño oscuro con lazos, brillo\ny decoración de cumpleaños.',
     image: cakeBirthday,
-    alt: 'Pastel negro decorado para cumpleaños'
+    alt: 'Pastel negro decorado para cumpleaños',
+    price: null
   },
   {
+    id: 'pastel-flores',
     name: 'Pastel con Flores',
     description: 'Acabado clásico blanco con flores\ny detalles elegantes.',
     image: cakeFlower,
-    alt: 'Pastel blanco con flores grandes'
+    alt: 'Pastel blanco con flores grandes',
+    price: null
   },
   {
+    id: 'pastel-tres-capas',
     name: 'Pastel de 3 Capas',
     description: 'Pastel alto en tonos rosados,\nideal para celebraciones grandes.',
     image: cakeThreeTier,
-    alt: 'Pastel de tres capas rosa y blanco'
+    alt: 'Pastel de tres capas rosa y blanco',
+    price: null
   },
   {
+    id: 'pastel-princesa',
     name: 'Pastel Princesa',
     description: 'Diseño colorido para celebraciones\ninfantiles personalizadas.',
     image: cakePrincess,
-    alt: 'Pastel de princesa con cerezas'
+    alt: 'Pastel de princesa con cerezas',
+    price: null
   }
 ];
