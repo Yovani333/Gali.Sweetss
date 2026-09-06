@@ -1,0 +1,34 @@
+.hero__image-wrap.bakery-scene {
+  position: relative;
+  height: auto;
+  min-height: 340px;
+  align-self: stretch;
+}
+.bakery-scene__canvas { position: absolute; inset: 0; }
+.bakery-scene__canvas canvas { display: block; width: 100%; height: 100%; }
+.hero__image-wrap .bakery-scene__fallback {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  object-fit: contain;
+}
+.bakery-scene__pause {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--pink-border);
+  border-radius: 50%;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  cursor: pointer;
+}
+@media (max-width: 780px) {
+  .hero__image-wrap.bakery-scene { min-height: 310px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bakery-scene__pause { display: none; }
+}

@@ -14,7 +14,7 @@ export default function App() {
     <>
       <Header />
       <main>
-        <Hero onPreview={setPreview} />
+        <Hero />
         <FeaturedProducts onPreview={setPreview} />
         <InfoBand />
       </main>
