@@ -154,7 +154,7 @@ export function createBakeryScene(host, isPaused, onContextLost) {
     eyes.forEach((eye) => { eye.scale.y = 0.04 * blink; });
     render();
   }
-  const resize = new ResizeObserver(() => {
+  const resizeScene = () => {
     const { width, height } = host.getBoundingClientRect();
     if (!width || !height || disposed || contextLost) return;
     const aspect = width / height;
@@ -166,8 +166,10 @@ export function createBakeryScene(host, isPaused, onContextLost) {
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
     render();
-  });
+  };
+  const resize = new ResizeObserver(resizeScene);
   resize.observe(host);
+  resizeScene();
   const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; });
   observer.observe(host);
   const lost = (event) => { event.preventDefault(); contextLost = true; canvas.style.visibility = 'hidden'; onContextLost(); };
