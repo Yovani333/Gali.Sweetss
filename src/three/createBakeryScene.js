@@ -6,7 +6,7 @@ export function createBakeryScene(host, isPaused, onContextLost) {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   const canvas = renderer.domElement;
   canvas.setAttribute('role', 'img');
   canvas.setAttribute('aria-label', 'Una pastelera con delantal rosa decora un pastel en una mesa de reposteria, escena 3D animada');

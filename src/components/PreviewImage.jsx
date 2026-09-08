@@ -1,4 +1,4 @@
-export default function PreviewImage({ src, alt, onPreview }) {
+export default function PreviewImage({ src, thumbnail, thumbnailSmall, alt, onPreview }) {
   return (
     <button
       className="image-preview-trigger"
@@ -12,7 +12,14 @@ export default function PreviewImage({ src, alt, onPreview }) {
         }
       }}
     >
-      <img src={src} alt={alt} />
+      <img
+        src={thumbnail || src}
+        srcSet={thumbnailSmall && thumbnail ? `${thumbnailSmall} 360w, ${thumbnail} 720w` : undefined}
+        sizes="(max-width: 560px) 92vw, (max-width: 1024px) 44vw, 260px"
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+      />
     </button>
   );
 }

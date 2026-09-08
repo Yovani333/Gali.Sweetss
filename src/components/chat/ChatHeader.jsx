@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import logo from '../../../Logos Gali/Logo2.png';
+import logo from '../../assets/brand/logo-primary.png';
 
 export default function ChatHeader({ onClose }) {
   return (

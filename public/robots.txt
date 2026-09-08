@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yovani333.github.io/Gali.Sweetss/sitemap.xml

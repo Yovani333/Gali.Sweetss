@@ -9,11 +9,12 @@ export default function ImageViewer({ image, onClose }) {
   const capturedClick = useRef(false);
   const [space, setSpace] = useState({ width: 0, height: 0 });
   const [zoom, setZoom] = useState(1);
-  const fit = Math.min(1, space.width / image.width, space.height / image.height);
+  const [intrinsic, setIntrinsic] = useState({ width: image.width, height: image.height });
+  const fit = Math.min(1, space.width / intrinsic.width, space.height / intrinsic.height);
   const maxZoom = fit > 0 ? Math.max(1, Math.min(4, 1 / fit)) : 1;
   const magnification = Math.min(zoom, maxZoom);
-  const width = image.width * fit * magnification;
-  const height = image.height * fit * magnification;
+  const width = intrinsic.width * fit * magnification;
+  const height = intrinsic.height * fit * magnification;
 
   useLayoutEffect(() => {
     const modal = dialog.current;
@@ -109,6 +110,10 @@ export default function ImageViewer({ image, onClose }) {
             alt={image.alt}
             draggable={false}
             style={{ width, height }}
+            onLoad={(event) => {
+              const { naturalWidth, naturalHeight } = event.currentTarget;
+              if (naturalWidth && naturalHeight) setIntrinsic({ width: naturalWidth, height: naturalHeight });
+            }}
             onDoubleClick={() => setZoom(magnification > 1 ? 1 : Math.min(2, maxZoom))}
           />
         </div>

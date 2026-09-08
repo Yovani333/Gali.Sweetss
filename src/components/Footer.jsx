@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
         <CupcakeIcon />
       </div>
-      <p className="copyright">© 2024 Gali Sweets. Todos los derechos reservados.</p>
+      <p className="copyright">© {new Date().getFullYear()} Gali Sweets. Todos los derechos reservados.</p>
     </footer>
   );
 }

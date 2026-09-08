@@ -11,7 +11,14 @@ export default function ProductOptions({ products, mode, onChoose, onPreview }) 
       {products.map((product) => (
         <article className="chat-product" key={product.id}>
           <button type="button" className="chat-product__image" aria-label={`Ver ${product.name}`} onClick={(event) => preview(event, product)}>
-            <img src={product.image} alt="" />
+            <img
+              src={product.thumbnail || product.image}
+              srcSet={product.thumbnailSmall && product.thumbnail ? `${product.thumbnailSmall} 360w, ${product.thumbnail} 720w` : undefined}
+              sizes="72px"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </button>
           <div className="chat-product__copy">
             <strong>{product.name}</strong>
